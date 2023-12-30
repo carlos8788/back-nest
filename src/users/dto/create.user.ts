@@ -5,8 +5,10 @@ import {
   IsNumber,
   MinLength,
   Equals,
+  IsMongoId,
 } from 'class-validator';
 import { UserRole } from '../roles';
+import { Types } from 'mongoose';
 
 export class CreateUserDTO {
   @IsNotEmpty()
@@ -21,10 +23,11 @@ export class CreateUserDTO {
   @IsNotEmpty()
   @MinLength(8)
   tel: string;
+  @IsOptional()
+  fecha_nac?: string;
   @IsNotEmpty()
-  fecha_nac: string;
-  @IsNotEmpty()
-  obra_social: string;
+  @IsMongoId()
+  obra_social: string | Types.ObjectId;
   @IsOptional()
   comment?: string;
   @IsNotEmpty()

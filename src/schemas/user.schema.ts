@@ -1,4 +1,6 @@
 import { Schema, Prop, SchemaFactory } from '@nestjs/mongoose';
+import { ObraSocial } from './obra_social.schema';
+import { Types } from 'mongoose';
 
 @Schema({
   timestamps: true,
@@ -17,11 +19,14 @@ export class User {
   last_name: string;
 
   @Prop({
-    default: false,
+    isInteger: true,
+    trim: true,
+    required: true,
   })
   age: number;
 
   @Prop({
+    isInteger: true,
     trim: true,
     required: true,
   })
@@ -29,15 +34,16 @@ export class User {
 
   @Prop({
     trim: true,
-    required: true,
   })
   fecha_nac: string;
 
   @Prop({
     trim: true,
     required: true,
+    type: Types.ObjectId,
+    ref: 'ObraSocial',
   })
-  obra_social: string;
+  obra_social: ObraSocial | Types.ObjectId;
 
   @Prop({
     trim: true,
