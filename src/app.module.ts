@@ -3,6 +3,7 @@ import { ConfigModule, ConfigService } from '@nestjs/config';
 import { MongooseModule } from '@nestjs/mongoose';
 import { UsersModule } from './users/users.module';
 import { ObraSocialModule } from './obra_social/obra_social.module';
+import { TurnoModule } from './turno/turno.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ObraSocialModule } from './obra_social/obra_social.module';
     }),
     UsersModule,
     ObraSocialModule,
+    TurnoModule,
   ],
 })
 export class AppModule {}
